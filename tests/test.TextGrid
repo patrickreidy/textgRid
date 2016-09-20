@@ -1,0 +1,92 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 10 
+tiers? <exists> 
+size = 3 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "Words" 
+        xmin = 0 
+        xmax = 10 
+        intervals: size = 5 
+        intervals [1]:
+            xmin = 0 
+            xmax = 1 
+            text = "" 
+        intervals [2]:
+            xmin = 1 
+            xmax = 3 
+            text = "word.1" 
+        intervals [3]:
+            xmin = 3 
+            xmax = 6 
+            text = "" 
+        intervals [4]:
+            xmin = 6 
+            xmax = 9 
+            text = "word.2" 
+        intervals [5]:
+            xmin = 9 
+            xmax = 10 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "Phones" 
+        xmin = 0 
+        xmax = 10 
+        intervals: size = 10 
+        intervals [1]:
+            xmin = 0 
+            xmax = 1 
+            text = "" 
+        intervals [2]:
+            xmin = 1 
+            xmax = 1.5 
+            text = "phone.1a" 
+        intervals [3]:
+            xmin = 1.5 
+            xmax = 2.5 
+            text = "phone.1b" 
+        intervals [4]:
+            xmin = 2.5 
+            xmax = 3 
+            text = "phone.1c" 
+        intervals [5]:
+            xmin = 3 
+            xmax = 6 
+            text = "" 
+        intervals [6]:
+            xmin = 6 
+            xmax = 6.75 
+            text = "phone.2a" 
+        intervals [7]:
+            xmin = 6.75 
+            xmax = 7.25 
+            text = "phone.2b" 
+        intervals [8]:
+            xmin = 7.25 
+            xmax = 8.25 
+            text = "phone.2c" 
+        intervals [9]:
+            xmin = 8.25 
+            xmax = 9 
+            text = "phone.2d" 
+        intervals [10]:
+            xmin = 9 
+            xmax = 10 
+            text = "" 
+    item [3]:
+        class = "TextTier" 
+        name = "Events" 
+        xmin = 0 
+        xmax = 10 
+        points: size = 2 
+        points [1]:
+            number = 6.75 
+            mark = "voicingOn" 
+        points [2]:
+            number = 8.25 
+            mark = "voicingOff" 

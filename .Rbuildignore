@@ -1,0 +1,7 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+.git/*
+man-roxygen/*
+cran-comments.md
+
+^\.travis\.yml$

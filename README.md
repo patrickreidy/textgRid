@@ -19,5 +19,7 @@ in Praat TextGrid objects.
 ## S4 generics:
 
 * TextGrid()
+
   Usage: TextGrid('path/to/my.TextGrid')
+
   Value: A TextGrid object, which is a list of IntervalTier and PointTier objects.

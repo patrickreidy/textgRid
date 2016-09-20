@@ -13,9 +13,9 @@ portion of waveform data (e.g., a phonetic segment or word in speech data).
 \section{Slots}{
 
 \describe{
-\item{\code{tierName}}{A character string, the name of the Tier.}
+\item{\code{name}}{A character string, the name of the Tier.}
 
-\item{\code{tierNumber}}{An integer, the number of the Tier within the TextGrid.}
+\item{\code{number}}{An integer, the number of the Tier within the TextGrid.}
 
 \item{\code{startTimes}}{A numeric vector, the start times of the intervals in
 the IntervalTier.}

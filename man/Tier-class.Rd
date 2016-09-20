@@ -14,9 +14,9 @@ to both subtypes of tier-like object.
 \section{Slots}{
 
 \describe{
-\item{\code{tierName}}{A character string, the name of the Tier.}
+\item{\code{name}}{A character string, the name of the Tier.}
 
-\item{\code{tierNumber}}{An integer, the number of the Tier within the TextGrid.}
+\item{\code{number}}{An integer, the number of the Tier within the TextGrid.}
 }}
 \seealso{
 \code{\link{IntervalTier-class}}, \code{\link{PointTier-class}},

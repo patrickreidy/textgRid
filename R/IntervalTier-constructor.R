@@ -31,8 +31,8 @@ setMethod(
   def = function(praatText) {
     # Initialize the IntervalTier object.
     new(Class = 'IntervalTier',
-        tierName   = .TierName(praatText),
-        tierNumber = .TierNumber(praatText),
+        name       = .TierName(praatText),
+        number     = .TierNumber(praatText),
         startTimes = .IntervalStartTimes(praatText),
         endTimes   = .IntervalEndTimes(praatText),
         labels     = .IntervalLabels(praatText)

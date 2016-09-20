@@ -15,12 +15,12 @@ NULL
 #' @rdname Tier-accessors
 #' @export
 tierName <- function(tier) {
-  tier@tierName
+  tier@name
 }
 
 
 #' @rdname Tier-accessors
 #' @export
 tierNumber <- function(tier) {
-  tier@tierNumber
+  tier@number
 }

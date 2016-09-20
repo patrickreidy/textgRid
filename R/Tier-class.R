@@ -16,6 +16,6 @@
 setClass(
   Class = 'Tier',
   contains = c(),
-  slots    = c(tierName   = 'character',
-               tierNumber = 'numeric')
+  slots    = c(name   = 'character',
+               number = 'numeric')
 )

@@ -32,8 +32,8 @@ setMethod(
   def = function(praatText)
     # Initialize the TextTier object.
     new(Class = 'PointTier',
-        tierName   = .TierName(praatText),
-        tierNumber = .TierNumber(praatText),
+        name       = .TierName(praatText),
+        number     = .TierNumber(praatText),
         times      = .PointTimes(praatText),
         labels     = .PointLabels(praatText)
     )

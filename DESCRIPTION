@@ -2,7 +2,7 @@ Package: textgRid
 Title: Praat TextGrid Objects in R
 Version: 1.0.0
 Authors@R: person("Patrick", "Reidy", email = "patrick.francis.reidy@gmail.com", 
-    role = c("aut", "cre", "cph"))
+    role = c("aut", "cre"))
 Description: The software application Praat can be used to annotate
     waveform data (e.g., to mark intervals of interest or to label events).
     These annotations are stored in a Praat TextGrid object, which consists of
@@ -40,3 +40,5 @@ Collate:
 URL: www.praat.org, http://www.fon.hum.uva.nl/praat/manual/TextGrid.html
 Suggests:
     testthat
+BugReports: https://github.com/patrickreidy/textgRid
+

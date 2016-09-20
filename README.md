@@ -1,6 +1,4 @@
-textgRid
-========
-
+# textgRid
 
 The software application Praat can be used to annotate waveform data
 (e.g., to mark intervals of interest or to label events).
@@ -10,3 +8,16 @@ sequential (i.e., not overlapping) labeled intervals. A point tier consists
 of labeled events that have no duration. The textgRid package provides 
 S4 classes, generics, and methods for accessing information that is stored
 in Praat TextGrid objects.
+
+## S4 classes:
+
+* Tier
+* IntervalTier
+* PointTier
+* TextGrid
+
+## S4 generics:
+
+* TextGrid()
+  Usage: TextGrid('path/to/my.TextGrid')
+  Value: A TextGrid object, which is a list of IntervalTier and PointTier objects.

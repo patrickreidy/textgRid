@@ -5,3 +5,5 @@ man-roxygen/*
 cran-comments.md
 
 ^\.travis\.yml$
+
+.tar\.gz

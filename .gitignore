@@ -3,3 +3,5 @@
 .RData
 ._*
 *.Rproj
+*.tar.gz
+

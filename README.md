@@ -1,5 +1,7 @@
 # textgRid
 
+[![Build Status](https://travis-ci.org/patrickreidy/textgRid.svg?branch=master)](https://travis-ci.org/patrickreidy/textgRid)
+
 The software application Praat can be used to annotate waveform data
 (e.g., to mark intervals of interest or to label events).
 These annotations are stored in a Praat TextGrid object, which consists of

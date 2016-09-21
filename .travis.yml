@@ -6,3 +6,10 @@ cache: packages
 r:
   - release
   - devel
+
+r_github_packages:
+  - jimhester/covr
+
+after_success:
+  - Rscript - 'covr::coveralls()'
+

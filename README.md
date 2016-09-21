@@ -1,6 +1,7 @@
 # textgRid
 
 [![Build Status](https://travis-ci.org/patrickreidy/textgRid.svg?branch=master)](https://travis-ci.org/patrickreidy/textgRid)
+[![Coverage Status](https://coveralls.io/repos/github/patrickreidy/textgRid/badge.svg?branch=master)](https://coveralls.io/github/patrickreidy/textgRid)
 
 The software application Praat can be used to annotate waveform data
 (e.g., to mark intervals of interest or to label events).

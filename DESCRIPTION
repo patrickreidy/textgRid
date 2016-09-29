@@ -38,8 +38,8 @@ Collate:
     'TextGrid-utilities.R'
     'Tier-accessors.R'
     'Tier-utilities.R'
+    'as.data.frame.R'
     'finders.R'
     'textgRid.R'
 URL: www.praat.org, http://www.fon.hum.uva.nl/praat/manual/TextGrid.html
 BugReports: https://github.com/patrickreidy/textgRid
-

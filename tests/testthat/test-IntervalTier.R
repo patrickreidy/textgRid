@@ -72,33 +72,69 @@ test_that('findIntervals() can find intervals with non-empty labels', {
   # 6.0 --  9.0 = word.2
   # 9.0 -- 10.0 = <empty>
   .words_tier <- .textgrid$Words
-  expect_equal(object   = findIntervals(tier = .words_tier),
+  expect_equal(object   = findIntervals(tier = .words_tier, stringsAsFactors = FALSE),
                expected = data.frame(
                  Index     = c(2, 4),
                  StartTime = c(1.0, 6.0),
                  EndTime   = c(3.0, 9.0),
-                 Label     = c('word.1', 'word.2')
+                 Label     = c('word.1', 'word.2'),
+                 stringsAsFactors = FALSE
                ))
-  expect_equal(object   = findIntervals(tier = .words_tier, pattern = '1'),
+  expect_equal(object   = findIntervals(tier = .words_tier, stringsAsFactors = TRUE),
+               expected = data.frame(
+                 Index     = c(2, 4),
+                 StartTime = c(1.0, 6.0),
+                 EndTime   = c(3.0, 9.0),
+                 Label     = c('word.1', 'word.2'),
+                 stringsAsFactors = TRUE
+               ))
+  expect_equal(object   = findIntervals(tier = .words_tier, pattern = '1', stringsAsFactors = FALSE),
                expected = data.frame(
                  Index     = c(2),
                  StartTime = c(1.0),
                  EndTime   = c(3.0),
-                 Label     = c('word.1')
+                 Label     = c('word.1'),
+                 stringsAsFactors = FALSE
                ))
-  expect_equal(object   = findIntervals(tier = .words_tier, from = 6.5, to = 7.5),
+  expect_equal(object   = findIntervals(tier = .words_tier, pattern = '1', stringsAsFactors = TRUE),
+               expected = data.frame(
+                 Index     = c(2),
+                 StartTime = c(1.0),
+                 EndTime   = c(3.0),
+                 Label     = c('word.1'),
+                 stringsAsFactors = TRUE
+               ))
+  expect_equal(object   = findIntervals(tier = .words_tier, from = 6.5, to = 7.5, stringsAsFactors = FALSE),
                expected = data.frame(
                  Index     = c(4),
                  StartTime = c(6.0),
                  EndTime   = c(9.0),
-                 Label     = c('word.2')
+                 Label     = c('word.2'),
+                 stringsAsFactors = FALSE
                ))
-  expect_equal(object   = findIntervals(tier = .words_tier, at = 7.5),
+  expect_equal(object   = findIntervals(tier = .words_tier, from = 6.5, to = 7.5, stringsAsFactors = TRUE),
                expected = data.frame(
                  Index     = c(4),
                  StartTime = c(6.0),
                  EndTime   = c(9.0),
-                 Label     = c('word.2')
+                 Label     = c('word.2'),
+                 stringsAsFactors = TRUE
+               ))
+  expect_equal(object   = findIntervals(tier = .words_tier, at = 7.5, stringsAsFactors = FALSE),
+               expected = data.frame(
+                 Index     = c(4),
+                 StartTime = c(6.0),
+                 EndTime   = c(9.0),
+                 Label     = c('word.2'),
+                 stringsAsFactors = FALSE
+               ))
+  expect_equal(object   = findIntervals(tier = .words_tier, at = 7.5, stringsAsFactors = TRUE),
+               expected = data.frame(
+                 Index     = c(4),
+                 StartTime = c(6.0),
+                 EndTime   = c(9.0),
+                 Label     = c('word.2'),
+                 stringsAsFactors = TRUE
                ))
   # The Phones tier comprises the following intervals:
   # 0.0  -- 1.0  = <empty>
@@ -112,32 +148,60 @@ test_that('findIntervals() can find intervals with non-empty labels', {
   # 8.25 -- 9.0  = phone.2d
   # 9.0  -- 10.0 = <empty>
   .phones_tier <- .textgrid$Phones
-  expect_equal(object   = findIntervals(tier = .phones_tier),
+  expect_equal(object   = findIntervals(tier = .phones_tier, stringsAsFactors = FALSE),
                expected = data.frame(
                  Index     = c(2, 3, 4, 6, 7, 8, 9),
                  StartTime = c(1.0, 1.5, 2.5, 6.0, 6.75, 7.25, 8.25),
                  EndTime   = c(1.5, 2.5, 3.0, 6.75, 7.25, 8.25, 9.0),
-                 Label     = paste('phone', c('1a', '1b', '1c', '2a', '2b', '2c', '2d'), sep = '.')
+                 Label     = paste('phone', c('1a', '1b', '1c', '2a', '2b', '2c', '2d'), sep = '.'),
+                 stringsAsFactors = FALSE
                ))
-  expect_equal(object   = findIntervals(tier = .phones_tier, pattern = '1'),
+  expect_equal(object   = findIntervals(tier = .phones_tier, stringsAsFactors = TRUE),
+               expected = data.frame(
+                 Index     = c(2, 3, 4, 6, 7, 8, 9),
+                 StartTime = c(1.0, 1.5, 2.5, 6.0, 6.75, 7.25, 8.25),
+                 EndTime   = c(1.5, 2.5, 3.0, 6.75, 7.25, 8.25, 9.0),
+                 Label     = paste('phone', c('1a', '1b', '1c', '2a', '2b', '2c', '2d'), sep = '.'),
+                 stringsAsFactors = TRUE
+               ))
+  expect_equal(object   = findIntervals(tier = .phones_tier, pattern = '1', stringsAsFactors = FALSE),
                expected = data.frame(
                  Index     = c(2, 3, 4),
                  StartTime = c(1.0, 1.5, 2.5),
                  EndTime   = c(1.5, 2.5, 3.0),
-                 Label     = paste('phone', c('1a', '1b', '1c'), sep = '.')
+                 Label     = paste('phone', c('1a', '1b', '1c'), sep = '.'),
+                 stringsAsFactors = FALSE
                ))
-  expect_equal(object   = findIntervals(tier = .phones_tier, from = 6.5, to = 7.5),
+  expect_equal(object   = findIntervals(tier = .phones_tier, pattern = '1', stringsAsFactors = TRUE),
+               expected = data.frame(
+                 Index     = c(2, 3, 4),
+                 StartTime = c(1.0, 1.5, 2.5),
+                 EndTime   = c(1.5, 2.5, 3.0),
+                 Label     = paste('phone', c('1a', '1b', '1c'), sep = '.'),
+                 stringsAsFactors = TRUE
+               ))
+  expect_equal(object   = findIntervals(tier = .phones_tier, from = 6.5, to = 7.5, stringsAsFactors = FALSE),
                expected = data.frame(
                  Index     = c(6, 7, 8),
                  StartTime = c(6.0, 6.75, 7.25),
                  EndTime   = c(6.75, 7.25, 8.25),
-                 Label     = paste('phone', c('2a', '2b', '2c'), sep = '.')
+                 Label     = paste('phone', c('2a', '2b', '2c'), sep = '.'),
+                 stringsAsFactors = FALSE
                ))
-  expect_equal(object   = findIntervals(tier = .phones_tier, at = 7.5),
+  expect_equal(object   = findIntervals(tier = .phones_tier, from = 6.5, to = 7.5, stringsAsFactors = TRUE),
+               expected = data.frame(
+                 Index     = c(6, 7, 8),
+                 StartTime = c(6.0, 6.75, 7.25),
+                 EndTime   = c(6.75, 7.25, 8.25),
+                 Label     = paste('phone', c('2a', '2b', '2c'), sep = '.'),
+                 stringsAsFactors = TRUE
+               ))
+  expect_equal(object   = findIntervals(tier = .phones_tier, at = 7.5, stringsAsFactors = FALSE),
                expected = data.frame(
                  Index     = c(8),
                  StartTime = c(7.25),
                  EndTime   = c(8.25),
-                 Label     = paste('phone', c('2c'), sep = '.')
+                 Label     = paste('phone', c('2c'), sep = '.'),
+                 stringsAsFactors = FALSE
                ))
 })

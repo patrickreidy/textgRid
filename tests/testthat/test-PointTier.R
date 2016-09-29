@@ -41,34 +41,74 @@ test_that('findPoints() can find points with non-empty labels', {
   # 6.75 = voicingOn
   # 8.25 = voicingOff
   .events_tier <- .textgrid$Events
-  expect_equal(object   = findPoints(tier = .events_tier, pattern = 'On'),
+  expect_equal(object   = findPoints(tier = .events_tier, pattern = 'On', stringsAsFactors = FALSE),
                expected = data.frame(
                  Index = c(1),
                  Time  = c(6.75),
-                 Label = c('voicingOn')
+                 Label = c('voicingOn'),
+                 stringsAsFactors = FALSE
                ))
-  expect_equal(object   = findPoints(tier = .events_tier, pattern = 'on', ignore.case = TRUE),
+  expect_equal(object   = findPoints(tier = .events_tier, pattern = 'On', stringsAsFactors = TRUE),
                expected = data.frame(
                  Index = c(1),
                  Time  = c(6.75),
-                 Label = c('voicingOn')
+                 Label = c('voicingOn'),
+                 stringsAsFactors = TRUE
                ))
-  expect_equal(object   = findPoints(tier = .events_tier, from = 6.5, to = 7.5),
+  expect_equal(object   = findPoints(tier = .events_tier, pattern = 'on', ignore.case = TRUE, stringsAsFactors = FALSE),
                expected = data.frame(
                  Index = c(1),
                  Time  = c(6.75),
-                 Label = c('voicingOn')
+                 Label = c('voicingOn'),
+                 stringsAsFactors = FALSE
                ))
-  expect_equal(object   = findPoints(tier = .events_tier, to = 7.5),
+  expect_equal(object   = findPoints(tier = .events_tier, pattern = 'on', ignore.case = TRUE, stringsAsFactors = TRUE),
                expected = data.frame(
                  Index = c(1),
                  Time  = c(6.75),
-                 Label = c('voicingOn')
+                 Label = c('voicingOn'),
+                 stringsAsFactors = TRUE
                ))
-  expect_equal(object   = findPoints(tier = .events_tier, from = 6.5),
+  expect_equal(object   = findPoints(tier = .events_tier, from = 6.5, to = 7.5, stringsAsFactors = FALSE),
+               expected = data.frame(
+                 Index = c(1),
+                 Time  = c(6.75),
+                 Label = c('voicingOn'),
+                 stringsAsFactors = FALSE
+               ))
+  expect_equal(object   = findPoints(tier = .events_tier, from = 6.5, to = 7.5, stringsAsFactors = TRUE),
+               expected = data.frame(
+                 Index = c(1),
+                 Time  = c(6.75),
+                 Label = c('voicingOn'),
+                 stringsAsFactors = TRUE
+               ))
+  expect_equal(object   = findPoints(tier = .events_tier, to = 7.5, stringsAsFactors = FALSE),
+               expected = data.frame(
+                 Index = c(1),
+                 Time  = c(6.75),
+                 Label = c('voicingOn'),
+                 stringsAsFactors = FALSE
+               ))
+  expect_equal(object   = findPoints(tier = .events_tier, to = 7.5, stringsAsFactors = TRUE),
+               expected = data.frame(
+                 Index = c(1),
+                 Time  = c(6.75),
+                 Label = c('voicingOn'),
+                 stringsAsFactors = TRUE
+               ))
+  expect_equal(object   = findPoints(tier = .events_tier, from = 6.5, stringsAsFactors = FALSE),
                expected = data.frame(
                  Index = c(1, 2),
                  Time  = c(6.75, 8.25),
-                 Label = paste0('voicing', c('On', 'Off'))
+                 Label = paste0('voicing', c('On', 'Off')),
+                 stringsAsFactors = FALSE
+               ))
+  expect_equal(object   = findPoints(tier = .events_tier, from = 6.5, stringsAsFactors = TRUE),
+               expected = data.frame(
+                 Index = c(1, 2),
+                 Time  = c(6.75, 8.25),
+                 Label = paste0('voicing', c('On', 'Off')),
+                 stringsAsFactors = TRUE
                ))
 })

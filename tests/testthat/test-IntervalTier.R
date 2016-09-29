@@ -205,3 +205,143 @@ test_that('findIntervals() can find intervals with non-empty labels', {
                  stringsAsFactors = FALSE
                ))
 })
+
+
+test_that('as.data.frame.IntervalTier() correctly represents tier number', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(object   = as.data.frame(.textgrid$Words)$TierNumber,
+               expected = as.integer(c(1, 1)))
+  expect_equal(object   = as.data.frame(.textgrid$Phones)$TierNumber,
+               expected = as.integer(c(2, 2, 2, 2, 2, 2, 2)))
+})
+
+
+test_that('as.data.frame.IntervalTier() correctly represents tier name', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Words, stringsAsFactors = FALSE)$TierName,
+    expected = rep('Words', times = 2)
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Words, stringsAsFactors = TRUE)$TierName,
+    expected = as.factor(rep('Words', times = 2))
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Phones, stringsAsFactors = FALSE)$TierName,
+    expected = rep('Phones', times = 7)
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Phones, stringsAsFactors = TRUE)$TierName,
+    expected = as.factor(rep('Phones', times = 7))
+  )
+})
+
+
+test_that('as.data.frame.IntervalTier() correctly represents tier type', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Words, stringsAsFactors = FALSE)$TierType,
+    expected = rep('IntervalTier', times = 2)
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Words, stringsAsFactors = TRUE)$TierType,
+    expected = as.factor(rep('IntervalTier', times = 2))
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Phones, stringsAsFactors = FALSE)$TierType,
+    expected = rep('IntervalTier', times = 7)
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Phones, stringsAsFactors = TRUE)$TierType,
+    expected = as.factor(rep('IntervalTier', times = 7))
+  )
+})
+
+
+test_that('as.data.frame.IntervalTier() correctly represents interval index', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Words)$Index,
+    expected = as.integer(c(2, 4))
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Phones)$Index,
+    expected = as.integer(c(2:4, 6:9))
+  )
+})
+
+
+test_that('as.data.frame.IntervalTier() correctly represents interval start time', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Words)$StartTime,
+    expected = c(1.0, 6.0)
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Phones)$StartTime,
+    expected = c(1.0, 1.5, 2.5, 6.0, 6.75, 7.25, 8.25)
+  )
+})
+
+
+test_that('as.data.frame.IntervalTier() correctly represents interval end time', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Words)$EndTime,
+    expected = c(3.0, 9.0)
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Phones)$EndTime,
+    expected = c(1.5, 2.5, 3.0, 6.75, 7.25, 8.25, 9.0)
+  )
+})
+
+
+test_that('as.data.frame.IntervalTier() correctly represents interval label', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Words, stringsAsFactors = FALSE)$Label,
+    expected = paste('word', c('1', '2'), sep = '.')
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Words, stringsAsFactors = TRUE)$Label,
+    expected = as.factor(paste('word', c('1', '2'), sep = '.'))
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Phones, stringsAsFactors = FALSE)$Label,
+    expected = paste('phone', c('1a', '1b', '1c', '2a', '2b', '2c', '2d'), sep = '.')
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Phones, stringsAsFactors = TRUE)$Label,
+    expected = as.factor(paste('phone', c('1a', '1b', '1c', '2a', '2b', '2c', '2d'), sep = '.'))
+  )
+})
+
+
+test_that('as.data.frame.IntervalTier() correctly numbers rows by default', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = row.names(as.data.frame(.textgrid$Words)),
+    expected = as.character(1:2)
+  )
+  expect_equal(
+    object   = row.names(as.data.frame(.textgrid$Phones)),
+    expected = as.character(1:7)
+  )
+})
+
+
+test_that('as.data.frame.IntervalTier() can override default row names', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  .words <- as.data.frame(.textgrid$Words)$Label
+  expect_equal(
+    object   = row.names(as.data.frame(.textgrid$Words, row.names = .words)),
+    expected = .words
+  )
+  .phones <- as.data.frame(.textgrid$Phones)$Label
+  expect_equal(
+    object   = row.names(as.data.frame(.textgrid$Phones, row.names = .phones)),
+    expected = .phones
+  )
+})
+

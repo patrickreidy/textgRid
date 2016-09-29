@@ -5,7 +5,7 @@
 \title{Find intervals within an IntervalTier.}
 \usage{
 findIntervals(tier, pattern = "*", from = -Inf, to = Inf,
-  at = numeric(), ...)
+  at = numeric(), stringsAsFactors = FALSE, ...)
 }
 \arguments{
 \item{tier}{An \code{IntervalTier} object.}
@@ -23,6 +23,8 @@ Default is \code{Inf} so that the search includes the end of \code{tier}.}
 \item{at}{A numeric, an exact time at which to find intervals.
 Default is \code{numeric()} so that intervals are searched within
 \code{[from, to]}.}
+
+\item{stringsAsFactors}{A logical, default is \code{FALSE}.}
 
 \item{...}{optional arguments passed to \code{grep}.}
 }

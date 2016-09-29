@@ -4,7 +4,8 @@
 \alias{findPoints}
 \title{Find points within a PointTier.}
 \usage{
-findPoints(tier, pattern = "*", from = -Inf, to = Inf, ...)
+findPoints(tier, pattern = "*", from = -Inf, to = Inf,
+  stringsAsFactors = FALSE, ...)
 }
 \arguments{
 \item{tier}{A \code{PointTier} object.}
@@ -18,6 +19,8 @@ Default is \code{-Inf} so that the search includes the start of \code{tier}.}
 
 \item{to}{A numeric, the latest time to which to search for points.
 Default is \code{Inf} so that the search includes the end of \code{tier}.}
+
+\item{stringsAsFactors}{A logical, default is \code{FALSE}.}
 
 \item{...}{optional arguments passed to \code{grep}.}
 }

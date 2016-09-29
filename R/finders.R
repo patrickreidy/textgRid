@@ -15,6 +15,7 @@ NULL
 #'   Default is \code{-Inf} so that the search includes the start of \code{tier}.
 #' @param to A numeric, the latest time to which to search for points.
 #'   Default is \code{Inf} so that the search includes the end of \code{tier}.
+#' @param stringsAsFactors A logical, default is \code{FALSE}.
 #' @param ... optional arguments passed to \code{grep}.
 #' @return A \code{data.frame} whose rows correspond to the points found
 #'   according to the search criteria, and whose columns are:
@@ -22,14 +23,15 @@ NULL
 #' @name findPoints
 #' @seealso \code{\link{PointTier-class}}, \code{\link{grep}}
 #' @export
-findPoints <- function(tier, pattern = '*', from = -Inf, to = Inf, ...) {
+findPoints <- function(tier, pattern = '*', from = -Inf, to = Inf, stringsAsFactors = FALSE, ...) {
   .within_interval <- which(from <= pointTimes(tier) & pointTimes(tier) <= to)
   .match_label     <- grep(pattern = pattern, x = pointLabels(tier), ...)
   .indices         <- intersect(.within_interval, .match_label)
   .points          <- data.frame(
     Index = .indices,
     Time  = pointTimes(tier)[.indices],
-    Label = pointLabels(tier)[.indices]
+    Label = pointLabels(tier)[.indices],
+    stringsAsFactors = stringsAsFactors
   )
   return(.points)
 }
@@ -56,6 +58,7 @@ findPoints <- function(tier, pattern = '*', from = -Inf, to = Inf, ...) {
 #' @param at A numeric, an exact time at which to find intervals.
 #'   Default is \code{numeric()} so that intervals are searched within
 #'   \code{[from, to]}.
+#' @param stringsAsFactors A logical, default is \code{FALSE}.
 #' @param ... optional arguments passed to \code{grep}.
 #' @return A \code{data.frame} whose rows correspond to the intervals found
 #'   according to the search criteria, and whose columns are:
@@ -63,7 +66,7 @@ findPoints <- function(tier, pattern = '*', from = -Inf, to = Inf, ...) {
 #' @name findIntervals
 #' @seealso \code{\link{IntervalTier-class}}, \code{\link{grep}}
 #' @export
-findIntervals <- function(tier, pattern = '*', from = -Inf, to = Inf, at = numeric(), ...) {
+findIntervals <- function(tier, pattern = '*', from = -Inf, to = Inf, at = numeric(), stringsAsFactors = FALSE, ...) {
   if (length(at) > 0) {
     .match_time <- which(
       intervalStartTimes(tier) <= at &
@@ -81,7 +84,8 @@ findIntervals <- function(tier, pattern = '*', from = -Inf, to = Inf, at = numer
     Index     = .indices,
     StartTime = intervalStartTimes(tier)[.indices],
     EndTime   = intervalEndTimes(tier)[.indices],
-    Label     = intervalLabels(tier)[.indices]
+    Label     = intervalLabels(tier)[.indices],
+    stringsAsFactors = stringsAsFactors
   )
   return(.intervals)
 }

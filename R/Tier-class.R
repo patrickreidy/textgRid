@@ -17,5 +17,5 @@ setClass(
   Class = 'Tier',
   contains = c(),
   slots    = c(name   = 'character',
-               number = 'numeric')
+               number = 'integer')
 )

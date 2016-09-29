@@ -37,7 +37,7 @@ described in the tables below.
 Slot      | Type      | Accessor 
 ----------|-----------|---------------
 `@name`   | character | `tierName()`
-`@number` | numeric   | `tierNumber()`
+`@number` | integer   | `tierNumber()`
 
 #### `IntervalTier` (inherits from Tier)
 

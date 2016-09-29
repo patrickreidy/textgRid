@@ -73,7 +73,7 @@
                     pattern = '\\[.*\\]'),
     pattern = '[0123456789]+'
   )
-  .tier_numbers <- as.numeric(.tier_numbers)
+  .tier_numbers <- as.integer(.tier_numbers)
   return(.tier_numbers)
 }
 

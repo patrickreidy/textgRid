@@ -1,6 +1,6 @@
 Package: textgRid
 Title: Praat TextGrid Objects in R
-Version: 1.0.1
+Version: 1.0.1.9000
 Authors@R: person("Patrick", "Reidy", email = "patrick.francis.reidy@gmail.com", 
     role = c("aut", "cre"))
 Description: The software application Praat can be used to annotate

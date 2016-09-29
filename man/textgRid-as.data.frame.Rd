@@ -7,14 +7,27 @@
 \alias{textgRid-as.data.frame}
 \title{Coerce to a data.frame.}
 \usage{
-\method{as.data.frame}{IntervalTier}(x, stringsAsFactors = FALSE)
+\method{as.data.frame}{IntervalTier}(x, row.names = NULL, optional = FALSE,
+  ..., stringsAsFactors = FALSE)
 
-\method{as.data.frame}{PointTier}(x, stringsAsFactors = FALSE)
+\method{as.data.frame}{PointTier}(x, row.names = NULL, optional = FALSE,
+  ..., stringsAsFactors = FALSE)
 
-\method{as.data.frame}{TextGrid}(x, stringsAsFactors = FALSE)
+\method{as.data.frame}{TextGrid}(x, row.names = NULL, optional = FALSE, ...,
+  stringsAsFactors = FALSE)
 }
 \arguments{
 \item{x}{An \code{IntervalTier}, \code{PointTier}, or \code{TextGrid} object.}
+
+\item{row.names}{\code{NULL} or a character vector giving the row names for
+the returned \code{data.frame}. If \code{NULL} (the default), the rows
+of the returned \code{data.frame} are named numerically beginning at 1.}
+
+\item{optional}{A logical, default is \code{FALSE}.
+If \code{TRUE}, setting row names and converting column names is optional.}
+
+\item{...}{Additional optional arguments. (Only here for consistency with
+the generic.)}
 
 \item{stringsAsFactors}{A logical, default is \code{FALSE}.}
 }

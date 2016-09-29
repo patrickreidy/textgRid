@@ -112,3 +112,106 @@ test_that('findPoints() can find points with non-empty labels', {
                  stringsAsFactors = TRUE
                ))
 })
+
+
+test_that('as.data.frame.PointTier() correctly represents tier number', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Events)$TierNumber,
+    expected = as.integer(c(3, 3))
+  )
+})
+
+
+test_that('as.data.frame.PointTier() correctly represents tier name', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Events, stringsAsFactors = FALSE)$TierName,
+    expected = rep('Events', times = 2)
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Events, stringsAsFactors = TRUE)$TierName,
+    expected = as.factor(rep('Events', times = 2))
+  )
+})
+
+
+test_that('as.data.frame.PointTier() correctly represents tier type', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Events, stringsAsFactors = FALSE)$TierType,
+    expected = rep('PointTier', times = 2)
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Events, stringsAsFactors = TRUE)$TierType,
+    expected = as.factor(rep('PointTier', times = 2))
+  )
+})
+
+
+test_that('as.data.frame.PointTier() correctly represents point index', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Events)$Index,
+    expected = as.integer(1:2)
+  )
+})
+
+
+test_that('as.data.frame.PointTier() correctly represents point start time', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Events)$StartTime,
+    expected = c(6.75, 8.25)
+  )
+})
+
+
+test_that('as.data.frame.PointTier() correctly represents point end time', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Events)$EndTime,
+    expected = c(6.75, 8.25)
+  )
+})
+
+
+test_that('as.data.frame.PointTier() equates point start time and point end time', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Events)$StartTime,
+    expected = as.data.frame(.textgrid$Events)$EndTime
+  )
+})
+
+
+test_that('as.data.frame.PointTier() correctly represents point label', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = as.data.frame(.textgrid$Events, stringsAsFactors = FALSE)$Label,
+    expected = paste0('voicing', c('On', 'Off'))
+  )
+  expect_equal(
+    object   = as.data.frame(.textgrid$Events, stringsAsFactors = TRUE)$Label,
+    expected = as.factor(paste0('voicing', c('On', 'Off')))
+  )
+})
+
+
+test_that('as.data.frame.PointTier() correctly numbers rows by default', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = row.names(as.data.frame(.textgrid$Events)),
+    expected = as.character(1:2)
+  )
+})
+
+
+test_that('as.data.frame.PointTier() can override default row names', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  .events <- as.data.frame(.textgrid$Events)$Label
+  expect_equal(
+    object   = row.names(as.data.frame(.textgrid$Events, row.names = .events)),
+    expected = .events
+  )
+})

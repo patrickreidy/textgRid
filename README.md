@@ -27,13 +27,16 @@ To install the current development version from Github:
 devtools::install_github('textgRid', username = 'patrickreidy')
 ```
 
-## Example workflows
+## Examples
 
+#### Read the contents of a .TextGrid file.
 ```r
-# Read in the contents of a .TextGrid file.
 textgrid <- TextGrid(system.file('extdata', 'myExample.TextGrid', 
                                  package = 'textgRid'))
+```
 
+#### Find all labeled intervals or points on a given tier.
+```r
 # Find all labeled intervals on the $Words IntervalTier.
 findIntervals(textgrid$Words)
 #   Index StartTime EndTime  Label
@@ -58,6 +61,7 @@ findIntervals(textgrid$Phones, pattern = '2')
 # 2     7      6.75    7.25 phone.2b
 # 3     8      7.25    8.25 phone.2c
 # 4     9      8.25    9.00 phone.2d
+
 # Alternatively...
 findIntervals(
   tier = textgrid$Phones,
@@ -75,8 +79,10 @@ findPoints(textgrid$Events)
 #   Index Time      Label
 # 1     1 6.75  voicingOn
 # 2     2 8.25 voicingOff
+```
 
-# Coerce the TextGrid object to a data.frame.
+#### Coerce a TextGrid object to a data.frame.
+```r
 as.data.frame(textgrid)
 #    TierNumber TierName     TierType Index StartTime EndTime      Label
 # 1           1    Words IntervalTier     2      1.00    3.00     word.1

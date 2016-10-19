@@ -345,3 +345,36 @@ test_that('as.data.frame.IntervalTier() can override default row names', {
   )
 })
 
+
+test_that('length.IntervalTier() returns the number of intervals in well-formed IntervalTiers', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = length(.textgrid$Words),
+    expected = length(intervalLabels(.textgrid$Words))
+  )
+  expect_equal(
+    object   = length(.textgrid$Phones),
+    expected = length(intervalLabels(.textgrid$Phones))
+  )
+})
+
+
+test_that('length.IntervalTier() returns NULL when its argument is ill-formed', {
+  .tier1 <- new(Class = 'IntervalTier',
+                name       = 'BadTier',
+                number     = as.integer(0),
+                startTimes = 1:20,
+                endTimes   = 21:23,
+                labels     = c('a', 'b', 'c'))
+  .tier2 <- new(Class = 'IntervalTier',
+                name       = 'BadTier',
+                number     = as.integer(0),
+                startTimes = 1:3,
+                endTimes   = 4:23,
+                labels     = c('a', 'b', 'c'))
+  expect_null(object = length(.tier1))
+  expect_null(object = length(.tier2))
+})
+
+
+

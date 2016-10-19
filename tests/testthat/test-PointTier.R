@@ -215,3 +215,22 @@ test_that('as.data.frame.PointTier() can override default row names', {
     expected = .events
   )
 })
+
+
+test_that('length.PointTier() returns the number of points in well-formed PointTiers', {
+  .textgrid <- TextGrid('../test.TextGrid')
+  expect_equal(
+    object   = length(.textgrid$Events),
+    expected = length(pointLabels(.textgrid$Events))
+  )
+})
+
+
+test_that('length.PointTier() returns NULL when its argument is ill-formed', {
+  .point_tier <- new(Class = 'PointTier',
+                     name   = 'BadTier',
+                     number = as.integer(0),
+                     times  = 1:10,
+                     labels = c('a', 'b', 'c'))
+  expect_null(length(.point_tier))
+})

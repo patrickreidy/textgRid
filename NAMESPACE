@@ -3,6 +3,8 @@
 S3method(as.data.frame,IntervalTier)
 S3method(as.data.frame,PointTier)
 S3method(as.data.frame,TextGrid)
+S3method(length,IntervalTier)
+S3method(length,PointTier)
 export(TextGrid)
 export(findIntervals)
 export(findPoints)

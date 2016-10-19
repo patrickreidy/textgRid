@@ -2,6 +2,7 @@
 
 **_Current development version on Github_**
 
+* `length` methods for `IntervalTier`s and `PointTier`s.
 * `Tier@number` slot changed from `numeric` to `integer`.
 * `as.data.frame` methods for `IntervalTier`s, `PointTier`s, and `TextGrid`s.
 * `stringsAsFactors` argument added to `find*()` functions.

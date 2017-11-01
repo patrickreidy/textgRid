@@ -2,9 +2,9 @@
 % Please edit documentation in R/PointTier-constructor.R
 \docType{methods}
 \name{PointTier-constructor}
+\alias{PointTier-constructor}
 \alias{PointTier}
 \alias{PointTier,character-method}
-\alias{PointTier-constructor}
 \title{Create an instance of the PointTier class.}
 \usage{
 PointTier(praatText, ...)
@@ -29,4 +29,3 @@ object.
 \seealso{
 \code{\link{PointTier-class}}, \code{\link{PointTier-accessors}}
 }
-

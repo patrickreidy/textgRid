@@ -2,8 +2,8 @@
 % Please edit documentation in R/Tier-class.R
 \docType{class}
 \name{Tier-class}
-\alias{Tier}
 \alias{Tier-class}
+\alias{Tier}
 \title{Tier S4 class for Praat TextGrids.}
 \description{
 The \code{Tier} class is extended by the \code{\link[=PointTier-class]{PointTier}}
@@ -18,8 +18,8 @@ to both subtypes of tier-like object.
 
 \item{\code{number}}{An integer, the number of the Tier within the TextGrid.}
 }}
+
 \seealso{
 \code{\link{IntervalTier-class}}, \code{\link{PointTier-class}},
   \code{\link{TextGrid-class}}, \code{\link{Tier-accessors}}
 }
-

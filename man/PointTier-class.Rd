@@ -21,9 +21,9 @@ A point's label is typically the annotation of some event in waveform data
 
 \item{\code{labels}}{A character vector, the labels of the points in the PointTier.}
 }}
+
 \seealso{
 \code{\link{PointTier-constructor}},
   \code{\link{PointTier-accessors}}, \code{\link{TextGrid-class}},
   \code{\link{Tier-class}}
 }
-

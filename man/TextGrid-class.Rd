@@ -21,9 +21,9 @@ A \code{TextGrid} object is essentially a list of
 
 \item{\code{endTime}}{A numeric, the end time of the TextGrid.}
 }}
+
 \seealso{
 \code{\link{TextGrid-constructor}},
   \code{\link{TextGrid-accessors}}, \code{\link{IntervalTier-class}},
   \code{\link{PointTier-class}}
 }
-

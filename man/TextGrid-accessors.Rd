@@ -2,8 +2,8 @@
 % Please edit documentation in R/TextGrid-accessors.R
 \name{TextGrid-accessors}
 \alias{TextGrid-accessors}
-\alias{textGridEndTime}
 \alias{textGridStartTime}
+\alias{textGridEndTime}
 \title{Access the slots of TextGrid objects.}
 \usage{
 textGridStartTime(textGrid)
@@ -21,4 +21,3 @@ object.
 \code{\link{TextGrid-class}},
   \code{\link{TextGrid-constructor}}
 }
-

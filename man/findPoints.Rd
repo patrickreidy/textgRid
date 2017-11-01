@@ -36,4 +36,3 @@ time range, whose labels match a pattern.
 \seealso{
 \code{\link{PointTier-class}}, \code{\link{grep}}
 }
-

@@ -34,3 +34,33 @@ test_that('writeTextGrid() can write to file', {
   expect_identical(.textgrid_out, .textgrid_in)
   file.remove(.fout)
 })
+
+
+test_that('writeIntervalTier() can write to file', {
+  .fin <- '../test.TextGrid'
+  .fout <- '../test_out.TextGrid'
+  .textgrid_in <- TextGrid(.fin)
+  .tier <- .textgrid_in@.Data[[1]] # an ItervalTier
+  
+  .tier_in <- writeIntervalTier(.tier)
+  writeIntervalTier(.tier, path = .fout)
+  .tier_out <- readLines(.fout)
+  
+  expect_identical(.tier_in, .tier_out)
+  file.remove(.fout)
+})
+
+
+test_that('writePointTier() can write to file', {
+  .fin <- '../test.TextGrid'
+  .fout <- '../test_out.TextGrid'
+  .textgrid_in <- TextGrid(.fin)
+  .tier <- .textgrid_in@.Data[[3]] # a PointTier
+  
+  .tier_in <- writePointTier(.tier)
+  writePointTier(.tier, path = .fout)
+  .tier_out <- readLines(.fout)
+  
+  expect_identical(.tier_in, .tier_out)
+  file.remove(.fout)
+})

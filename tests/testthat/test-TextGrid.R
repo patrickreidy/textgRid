@@ -208,3 +208,24 @@ test_that('as.data.frame.TextGrid() can override default row names', {
     expected = .labels
   )
 })
+
+
+test_that('TextGrid() of data.frame returns a TextGrid', {
+  .textgrid_in <- TextGrid('../test.TextGrid')
+  .textgrid_out <- TextGrid(as.data.frame(.textgrid_in))
+  expect_s4_class(.textgrid_out, 'TextGrid')
+})
+
+
+test_that('TextGrid() of data.frame returns a TextGrid', {
+  .textgrid_in <- TextGrid('../test.TextGrid')
+  .textgrid_out <- TextGrid(as.data.frame(.textgrid_in))
+  expect_s4_class(.textgrid_out, 'TextGrid')
+})
+
+
+test_that('TextGrid(as.data.frame(x))  equals x', {
+  .textgrid_in <- TextGrid('../test.TextGrid')
+  .textgrid_out <- TextGrid(as.data.frame(.textgrid_in))
+  expect_equal(.textgrid_in, .textgrid_out)
+})

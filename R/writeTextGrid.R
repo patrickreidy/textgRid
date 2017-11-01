@@ -50,15 +50,15 @@ writeTextGrid <- function(x, path = NULL, ...)  {
 # convert IntervalTier object into a Praat-compatible character vector and 
 # (optionally) write it to a file.
 writeIntervalTier <- function(x, path = NULL, ...) {
-  .tierStart <- min(x@startTimes)
-  .tierEnd <- max(x@endTimes)
-  .tierLen <- length(x@labels)
-  .labels <- replace(x@labels, is.na(x@labels), "")
+  .tierStart <- min(intervalStartTimes(x))
+  .tierEnd <- max(intervalEndTimes(x))
+  .labels <- replace(intervalLabels(x), is.na(intervalLabels(x)), "")
+  .tierLen <- length(.labels)
   
   .header <- c(
-    sprintf('    item[%d]:', x@number),
+    sprintf('    item[%d]:', tierNumber(x)),
             '        class = "IntervalTier"',
-    sprintf('        name = "%s"', x@name),
+    sprintf('        name = "%s"', tierName(x)),
     sprintf('        xmin = %g', .tierStart),
     sprintf('        xmax = %g', .tierEnd),
     sprintf('        intervals: size = %d', .tierLen)
@@ -67,7 +67,7 @@ writeIntervalTier <- function(x, path = NULL, ...) {
     c(sprintf('            xmin = %g', startTime),
       sprintf('            xmax = %g', endTime),
       sprintf('            text = "%s"', label))
-  }, x@startTimes, x@endTimes, .labels, SIMPLIFY = T)
+  }, intervalStartTimes(x), intervalEndTimes(x), .labels, SIMPLIFY = T)
   
   .out <- c(.header, .annotations)
   if (!is.null(path)) writeLines(.out, con = path, ...)
@@ -78,15 +78,15 @@ writeIntervalTier <- function(x, path = NULL, ...) {
 # convert PointTier object into a Praat-compatible character vector and 
 # (optionally) write it to a file.
 writePointTier <- function(x, path = NULL, ...) {
-  .tierStart <- min(x@times)
-  .tierEnd <- max(x@times)
-  .tierLen <- length(x@labels)
-  .labels <- replace(x@labels, is.na(x@labels), "")
+  .tierStart <- min(pointTimes(x))
+  .tierEnd <- max(pointTimes(x))
+  .labels <- replace(pointLabels(x), is.na(pointLabels(x)), "")
+  .tierLen <- length(.labels)
   
   .header <- c(
-    sprintf('    item[%d]:', x@number),
+    sprintf('    item[%d]:', tierNumber(x)),
             '        class = "TextTier"',
-    sprintf('        name = "%s"', x@name),
+    sprintf('        name = "%s"', tierName(x)),
     sprintf('        xmin = %g', .tierStart),
     sprintf('        xmax = %g', .tierEnd),
     sprintf('        points: size = %d', .tierLen)
@@ -94,7 +94,7 @@ writePointTier <- function(x, path = NULL, ...) {
   .annotations <- mapply(function(time, label) {
     c(sprintf('            number = %g', time),
       sprintf('            mark = "%s"', label))
-  }, x@times, .labels, SIMPLIFY = T)
+  }, pointTimes(x), .labels, SIMPLIFY = T)
   
   .out <- c(.header, .annotations)
   if (!is.null(path)) writeLines(.out, con = path, ...)

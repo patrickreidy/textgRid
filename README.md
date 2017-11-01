@@ -98,6 +98,11 @@ as.data.frame(textgrid)
 # 11          3   Events    PointTier     2      8.25    8.25 voicingOff
 ```
 
+#### Write a TextGrid object to a Praat-compatible .TextGrid file.
+```r
+writeTextGrid(textgrid, path = 'test_out.TextGrid')
+```
+
 ## Details on S4 classes
 
 The textgRid package defines four S4 classes, whose slots and accessors are 

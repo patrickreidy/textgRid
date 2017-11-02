@@ -56,11 +56,25 @@ setMethod(
   f   = 'TextGrid',
   sig = c(textGrid = 'data.frame'),
   def = function(textGrid, startTime = 0, endTime = NULL) {
-    .textGrid_clean <- .CleanTextGridDataFrame(textGrid)
-    if (is.null(endTime)) endTime <- max(.textGrid_clean$EndTime)
+    # TODO: Check if TierNumber column exists
+    # TODO: Check if TierType column exists
+    .tiers <- .DataFrame2TierObjects(textGrid)
+    .lastAnnotation <- max(
+      sapply(.tiers, function(x) {
+        if (inherits(x, 'PointTier')) { 
+          return(max(pointTimes(x)))
+        } else if (inherits(x, 'IntervalTier')) {
+          return(max(intervalEndTimes(x)))
+        }
+      })
+    )
+    endTime <- max(endTime, .lastAnnotation)
     new(Class = 'TextGrid',
-        .DataFrame2TierObjects(.textGrid_clean),
+        .tiers,
         startTime = startTime,
         endTime = endTime
     )
   })
+
+
+  

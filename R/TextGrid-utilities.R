@@ -55,41 +55,30 @@ NULL
 }
 
 
-# Check a data frame for compatibility with TextGrid constructor, report 
-# issues, make educated guesses to rename and clean columns where possible
-.CleanTextGridDataFrame <- function(x) {
-  # TODO: fill gaps in starTime/endTime with NA
-  return(x)
-}
-
 # convert a TextGrid data frame to a list of IntervalTier and PointTier objects 
 .DataFrame2TierObjects <- function(x) {
+  # TODO: Check if TierType and TierNumber exist
   lapply(split(x, x$TierNumber), function(t) {
     .tierType <- x$TierType[1]
-    
     if (.tierType == "IntervalTier") {
-      return(.DataFrame2IntervalTierObject(t))
+      return(IntervalTier(t))
     } else if (.tierType == "PointTier") {
-      return(.DataFrame2IntervalTierObject(t))
+      return(PointTier(t))
     }
   })
 }
 
-# convert an IntervalTier Data frame to an IntervalTier object
-.DataFrame2IntervalTierObject <- function(x) {
-  new(Class = 'IntervalTier',
-      name       = x$TierName[1],
-      number     = x$TierNumber[1],
-      startTimes = x$StartTime,
-      endTimes   = x$EndTime,
-      labels     = x$Label)
+# Check a data frame for compatibility with TextGrid constructor, report 
+# issues, make educated guesses to rename and clean columns where possible
+.CleanTextGridDataFrame <- function(x) {
+  # TODO: check if all necessary columns exist
+  # TODO: fill gaps between StarTime/EndTime with NA
+  y <- x %>% 
+    group_by(TierType, TierNumber) %>% 
+    mutate(StartTime = EndTime,
+           EndTime = lag(EndTime),
+           Label = NA)
+  
+  return(y)
 }
 
-# Convert a PointTier data frame  to a PointTier object
-.DataFrame2PointTierObject <- function(x) {
-  new(Class = 'PointTier',
-      name       = x$TierName[1],
-      number     = x$TierNumber[1],
-      times      = x$StartTime,
-      labels     = x$Label)
-}

@@ -18,7 +18,7 @@ NULL
 #' @importFrom methods setGeneric
 setGeneric(
   name = 'IntervalTier',
-  def  = function(praatText, ...) {
+  def  = function(x, ...) {
     standardGeneric('IntervalTier')
   }
 )
@@ -27,15 +27,40 @@ setGeneric(
 #' @importFrom methods setMethod new
 setMethod(
   f   = 'IntervalTier',
-  sig = c(praatText = 'character'),
-  def = function(praatText) {
+  sig = c(x = 'character'),
+  def = function(x) {
     # Initialize the IntervalTier object.
     new(Class = 'IntervalTier',
-        name       = .TierName(praatText),
-        number     = .TierNumber(praatText),
-        startTimes = .IntervalStartTimes(praatText),
-        endTimes   = .IntervalEndTimes(praatText),
-        labels     = .IntervalLabels(praatText)
+        name       = .TierName(x),
+        number     = .TierNumber(x),
+        startTimes = .IntervalStartTimes(x),
+        endTimes   = .IntervalEndTimes(x),
+        labels     = .IntervalLabels(x)
+    )
+  }
+)
+
+
+#' @rdname IntervalTier-constructor
+#' @importFrom methods setMethod new
+setMethod(
+  f   = 'IntervalTier',
+  sig = c(x = 'data.frame'),
+  def = function(x) {
+    # TODO: Check if TierName column exists exists
+    # TODO: Check if TierNumber col exists
+    # TODO: Check if StartTime col exists
+    # TODO: Check if EndTime col exists
+    # TODO: Check if Label col exists
+    # TODO: Check whether annotations are non-overlapping
+    # TODO: Fill Gaps in Annotations
+    # Initialize the IntervalTier object.
+    new(Class = 'IntervalTier',
+        name       = x$TierName[1],
+        number     = x$TierNumber[1],
+        startTimes = x$StartTime,
+        endTimes   = x$EndTime,
+        labels     = x$Label
     )
   }
 )

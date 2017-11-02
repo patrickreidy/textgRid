@@ -5,17 +5,20 @@
 \alias{IntervalTier-constructor}
 \alias{IntervalTier}
 \alias{IntervalTier,character-method}
+\alias{IntervalTier,data.frame-method}
 \title{Create an instance of the IntervalTier class.}
 \usage{
-IntervalTier(praatText, ...)
+IntervalTier(x, ...)
 
-\S4method{IntervalTier}{character}(praatText)
+\S4method{IntervalTier}{character}(x)
+
+\S4method{IntervalTier}{data.frame}(x)
 }
 \arguments{
+\item{...}{optional arguments for multiple dispatch (in development).}
+
 \item{praatText}{A character vector, the lines of text from a
 \code{.TextGrid} file that define an IntervalTier.}
-
-\item{...}{optional arguments for multiple dispatch (in development).}
 }
 \value{
 A \code{\link[=IntervalTier-class]{IntervalTier}} object. Values for the

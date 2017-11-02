@@ -7,7 +7,7 @@ NULL
 #' An S4 generic and S4 methods for creating an \code{\link[=PointTier-class]{PointTier}}
 #' object.
 #'
-#' @param praatText A character vector, the lines of text from a
+#' @param x A character vector, the lines of text from a
 #'   \code{.TextGrid} file that define a PointTier.
 #' @param ... optional arguments for multiple dispatch (in development).
 #' @return A \code{\link[=PointTier-class]{PointTier}} object. Values for the
@@ -19,7 +19,7 @@ NULL
 #' @importFrom methods setGeneric
 setGeneric(
   name = 'PointTier',
-  def  = function(praatText, ...)
+  def  = function(x, ...)
     standardGeneric('PointTier')
 )
 
@@ -28,13 +28,33 @@ setGeneric(
 #' @importFrom methods setMethod new
 setMethod(
   f   = 'PointTier',
-  sig = c(praatText = 'character'),
-  def = function(praatText)
+  sig = c(x = 'character'),
+  def = function(x)
     # Initialize the TextTier object.
     new(Class = 'PointTier',
-        name       = .TierName(praatText),
-        number     = .TierNumber(praatText),
-        times      = .PointTimes(praatText),
-        labels     = .PointLabels(praatText)
+        name       = .TierName(x),
+        number     = .TierNumber(x),
+        times      = .PointTimes(x),
+        labels     = .PointLabels(x)
+    )
+)
+
+
+#' @rdname PointTier-constructor
+#' @importFrom methods setMethod new
+setMethod(
+  f   = 'PointTier',
+  sig = c(x = 'data.frame'),
+  def = function(x)
+    # TODO: Check if TierName column exists exists
+    # TODO: Check if TierNumber col exists
+    # TODO: Check if StartTime col exists
+    # TODO: Check if Label col exists
+    # Initialize the TextTier object.
+    new(Class = 'PointTier',
+        name       = x$TierName[1],
+        number     = x$TierNumber[1],
+        times      = x$StartTime,
+        labels     = x$Label
     )
 )

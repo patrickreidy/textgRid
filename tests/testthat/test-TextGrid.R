@@ -227,5 +227,9 @@ test_that('TextGrid() of data.frame returns a TextGrid', {
 test_that('TextGrid(as.data.frame(x))  equals x', {
   .textgrid_in <- TextGrid('../test.TextGrid')
   .textgrid_out <- TextGrid(as.data.frame(.textgrid_in))
-  expect_equal(.textgrid_in, .textgrid_out)
+  expect_equal(.textgrid_in@.Data, .textgrid_out@.Data)
+  expect_equal(textGridStartTime(.textgrid_in), 
+               textGridStartTime(.textgrid_out))
+  expect_equal(textGridEndTime(.textgrid_in), 
+               textGridEndTime(.textgrid_out))
 })

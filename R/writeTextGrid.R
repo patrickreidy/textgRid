@@ -42,8 +42,12 @@ writeTextGrid <- function(x, path = NULL, ...)  {
   })
   
   .out <- c(.header, unlist(.tiers))
-  if (!is.null(path)) writeLines(.out, con = path, ...)
-  return(.out)
+  if (!is.null(path)) {
+    writeLines(.out, con = path, ...) 
+    return(invisible(.out))
+  } else {
+    return(.out)
+  }
 }
 
 
@@ -70,8 +74,12 @@ writeIntervalTier <- function(x, path = NULL, ...) {
   }, intervalStartTimes(x), intervalEndTimes(x), .labels, SIMPLIFY = T)
   
   .out <- c(.header, .annotations)
-  if (!is.null(path)) writeLines(.out, con = path, ...)
-  return(.out)
+  if (!is.null(path)) {
+    writeLines(.out, con = path, ...) 
+    return(invisible(.out))
+  } else {
+    return(.out)
+  }
 }
 
 
@@ -97,6 +105,10 @@ writePointTier <- function(x, path = NULL, ...) {
   }, pointTimes(x), .labels, SIMPLIFY = T)
   
   .out <- c(.header, .annotations)
-  if (!is.null(path)) writeLines(.out, con = path, ...)
-  return(.out)
+  if (!is.null(path)) {
+    writeLines(.out, con = path, ...) 
+    return(invisible(.out))
+  } else {
+    return(.out)
+  }
 }

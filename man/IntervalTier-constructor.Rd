@@ -12,7 +12,7 @@ IntervalTier(x, ...)
 
 \S4method{IntervalTier}{character}(x)
 
-\S4method{IntervalTier}{data.frame}(x)
+\S4method{IntervalTier}{data.frame}(x, startTime = 0, endTime = NULL)
 }
 \arguments{
 \item{...}{optional arguments for multiple dispatch (in development).}

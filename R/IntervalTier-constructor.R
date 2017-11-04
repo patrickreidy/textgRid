@@ -46,18 +46,34 @@ setMethod(
 setMethod(
   f   = 'IntervalTier',
   sig = c(x = 'data.frame'),
-  def = function(x) {
+  def = function(x, startTime = 0, endTime = NULL) {
     # TODO: Check if TierName column exists exists
+    .name <- x$TierName[1]
     # TODO: Check if TierNumber col exists
+    .number <- x$TierNumber[1]
     # TODO: Check if StartTime col exists
     # TODO: Check if EndTime col exists
+    endTime = max(endTime, max(x$EndTime))
     # TODO: Check if Label col exists
-    # TODO: Check whether annotations are non-overlapping
-    # TODO: Fill Gaps in Annotations
+    x <- x[, c('StartTime', 'EndTime', 'Label')]
+    x <- x[order(x$StartTime), ]
+    .endPrevious <- c(startTime, x$EndTime)
+    .startCurrent <- c(x$StartTime, endTime)
+    .gap <- .startCurrent - .endPrevious
+    # TODO: Check whether annotations are non-overlapping, with any(.gap < 0)
+    # Fill Gaps in Annotations
+    .gaps <- data.frame(
+      StartTime = .endPrevious,
+      EndTime = .startCurrent,
+      Label = NA
+    )
+    .gaps <- .gaps[.gap > 0, ]
+    x <- rbind(x, .gaps)
+    x <- x[order(x$StartTime), ]
     # Initialize the IntervalTier object.
     new(Class = 'IntervalTier',
-        name       = x$TierName[1],
-        number     = x$TierNumber[1],
+        name       = .name,
+        number     = .number,
         startTimes = x$StartTime,
         endTimes   = x$EndTime,
         labels     = x$Label

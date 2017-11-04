@@ -224,6 +224,13 @@ test_that('TextGrid() of data.frame returns a TextGrid', {
 })
 
 
+test_that('as.data.frame(TextGrid(as.data.frame(x))) equals x', {
+  .df_in <- as.data.frame(TextGrid('../test.TextGrid'))
+  .df_out <- as.data.frame(TextGrid(.df_in))
+  expect_equal(.df_in, .df_out)
+})
+
+
 test_that('TextGrid(as.data.frame(x))  equals x', {
   .textgrid_in <- TextGrid('../test.TextGrid')
   .textgrid_out <- TextGrid(as.data.frame(.textgrid_in))

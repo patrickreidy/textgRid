@@ -59,7 +59,7 @@ NULL
 .DataFrame2TierObjects <- function(x) {
   # TODO: Check if TierType and TierNumber exist
   lapply(split(x, x$TierNumber), function(t) {
-    .tierType <- x$TierType[1]
+    .tierType <- t$TierType[1]
     if (.tierType == "IntervalTier") {
       return(IntervalTier(t))
     } else if (.tierType == "PointTier") {

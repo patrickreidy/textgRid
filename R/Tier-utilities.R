@@ -1,5 +1,5 @@
 # Extract a @pattern from a string, @x.
-.Extract <- function(x, pattern, miss = NA) {
+.Extract <- function(x, pattern, miss = "") {
   .extracted <- rep(miss, length(regexpr(pattern, x)))
   .matches   <- regexpr(pattern, x) != -1
   .extracted[.matches] <- regmatches(x, m = regexpr(pattern, x))

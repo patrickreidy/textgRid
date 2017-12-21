@@ -1,6 +1,6 @@
 Package: textgRid
 Title: Praat TextGrid Objects in R
-Version: 1.0.1.9000
+Version: 1.0.2
 Authors@R: c(
     person("Patrick", "Reidy", email = "patrick.francis.reidy@gmail.com", 
     role = c("aut", "cre")),

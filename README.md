@@ -98,6 +98,12 @@ as.data.frame(textgrid)
 # 11          3   Events    PointTier     2      8.25    8.25 voicingOff
 ```
 
+#### Convert a data.frame to a TextGrid object
+```r
+df <- as.data.frame(textgrid)
+TextGrid(df)
+```
+
 #### Write a TextGrid object to a Praat-compatible .TextGrid file.
 ```r
 writeTextGrid(textgrid, path = 'test_out.TextGrid')

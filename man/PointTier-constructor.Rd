@@ -5,14 +5,17 @@
 \alias{PointTier-constructor}
 \alias{PointTier}
 \alias{PointTier,character-method}
+\alias{PointTier,data.frame-method}
 \title{Create an instance of the PointTier class.}
 \usage{
-PointTier(praatText, ...)
+PointTier(x, ...)
 
-\S4method{PointTier}{character}(praatText)
+\S4method{PointTier}{character}(x)
+
+\S4method{PointTier}{data.frame}(x)
 }
 \arguments{
-\item{praatText}{A character vector, the lines of text from a
+\item{x}{A character vector, the lines of text from a
 \code{.TextGrid} file that define a PointTier.}
 
 \item{...}{optional arguments for multiple dispatch (in development).}

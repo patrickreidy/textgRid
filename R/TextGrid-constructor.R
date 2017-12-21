@@ -16,6 +16,9 @@ NULL
 #'  argument is the path to a \code{.TextGrid} file. Otherwise, the
 #'  \code{textGrid} argument is assumed to be a character vector whose
 #'  elements are the lines of some \code{.TextGrid} file.
+#' @section Details for signature \code{c(textGrid = 'data.frame')}:
+#'  If \code{textGrid} is a data.frame it is tried to create a TextGrid object 
+#'  from it.
 #' @name TextGrid-constructor
 #' @aliases TextGrid
 #' @seealso \code{\link{TextGrid-class}}, \code{\link{TextGrid-accessors}}
@@ -45,3 +48,33 @@ setMethod(
         endTime = .TextGridTime(.textgrid, pattern = '^xmax')
     )
   })
+
+#' @rdname TextGrid-constructor
+#' @export
+#' @importFrom methods setMethod new
+setMethod(
+  f   = 'TextGrid',
+  sig = c(textGrid = 'data.frame'),
+  def = function(textGrid, startTime = 0, endTime = NULL) {
+    # TODO: Check if TierNumber column exists
+    # TODO: Check if TierType column exists
+    .tiers <- .DataFrame2TierObjects(textGrid)
+    .lastAnnotation <- max(
+      sapply(.tiers, function(x) {
+        if (inherits(x, 'PointTier')) { 
+          return(max(pointTimes(x)))
+        } else if (inherits(x, 'IntervalTier')) {
+          return(max(intervalEndTimes(x)))
+        }
+      })
+    )
+    endTime <- max(endTime, .lastAnnotation)
+    new(Class = 'TextGrid',
+        .tiers,
+        startTime = startTime,
+        endTime = endTime
+    )
+  })
+
+
+  

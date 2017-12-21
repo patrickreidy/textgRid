@@ -53,3 +53,32 @@ NULL
   names(.tier_objects) <- .TierName(praatText)
   return(.tier_objects)
 }
+
+
+# convert a TextGrid data frame to a list of IntervalTier and PointTier objects 
+.DataFrame2TierObjects <- function(x) {
+  # TODO: Check if TierType and TierNumber exist
+  lapply(split(x, x$TierNumber), function(t) {
+    .tierType <- t$TierType[1]
+    if (.tierType == "IntervalTier") {
+      return(IntervalTier(t))
+    } else if (.tierType == "PointTier") {
+      return(PointTier(t))
+    }
+  })
+}
+
+# Check a data frame for compatibility with TextGrid constructor, report 
+# issues, make educated guesses to rename and clean columns where possible
+.CleanTextGridDataFrame <- function(x) {
+  # TODO: check if all necessary columns exist
+  # TODO: fill gaps between StarTime/EndTime with NA
+  y <- x %>% 
+    group_by(TierType, TierNumber) %>% 
+    mutate(StartTime = EndTime,
+           EndTime = lag(EndTime),
+           Label = NA)
+  
+  return(y)
+}
+

@@ -208,3 +208,35 @@ test_that('as.data.frame.TextGrid() can override default row names', {
     expected = .labels
   )
 })
+
+
+test_that('TextGrid() of data.frame returns a TextGrid', {
+  .textgrid_in <- TextGrid('../test.TextGrid')
+  .textgrid_out <- TextGrid(as.data.frame(.textgrid_in))
+  expect_s4_class(.textgrid_out, 'TextGrid')
+})
+
+
+test_that('TextGrid() of data.frame returns a TextGrid', {
+  .textgrid_in <- TextGrid('../test.TextGrid')
+  .textgrid_out <- TextGrid(as.data.frame(.textgrid_in))
+  expect_s4_class(.textgrid_out, 'TextGrid')
+})
+
+
+test_that('as.data.frame(TextGrid(as.data.frame(x))) equals x', {
+  .df_in <- as.data.frame(TextGrid('../test.TextGrid'))
+  .df_out <- as.data.frame(TextGrid(.df_in))
+  expect_equal(.df_in, .df_out)
+})
+
+
+test_that('TextGrid(as.data.frame(x))  equals x', {
+  .textgrid_in <- TextGrid('../test.TextGrid')
+  .textgrid_out <- TextGrid(as.data.frame(.textgrid_in))
+  expect_equal(.textgrid_in@.Data, .textgrid_out@.Data)
+  expect_equal(textGridStartTime(.textgrid_in), 
+               textGridStartTime(.textgrid_out))
+  expect_equal(textGridEndTime(.textgrid_in), 
+               textGridEndTime(.textgrid_out))
+})

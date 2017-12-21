@@ -5,11 +5,14 @@
 \alias{TextGrid-constructor}
 \alias{TextGrid}
 \alias{TextGrid,character-method}
+\alias{TextGrid,data.frame-method}
 \title{Create an instance of the TextGrid class.}
 \usage{
 TextGrid(textGrid, ...)
 
 \S4method{TextGrid}{character}(textGrid)
+
+\S4method{TextGrid}{data.frame}(textGrid, startTime = 0, endTime = NULL)
 }
 \arguments{
 \item{textGrid}{A character vector}
@@ -30,6 +33,12 @@ object.
  argument is the path to a \code{.TextGrid} file. Otherwise, the
  \code{textGrid} argument is assumed to be a character vector whose
  elements are the lines of some \code{.TextGrid} file.
+}
+
+\section{Details for signature \code{c(textGrid = 'data.frame')}}{
+
+ If \code{textGrid} is a data.frame it is tried to create a TextGrid object 
+ from it.
 }
 
 \seealso{

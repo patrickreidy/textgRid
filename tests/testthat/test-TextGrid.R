@@ -195,14 +195,14 @@ test_that('as.data.frame.TextGrid() correctly numbers rows by default', {
   .textgrid <- TextGrid('../test.TextGrid')
   expect_equal(
     object   = row.names(as.data.frame(.textgrid)),
-    expected = as.character(1:11)
+    expected = as.character(1:17)
   )
 })
 
 
 test_that('as.data.frame.TextGrid() can override default row names', {
   .textgrid <- TextGrid('../test.TextGrid')
-  .labels   <- as.data.frame(.textgrid)$Label
+  .labels   <- letters[1:17]
   expect_equal(
     object   = row.names(as.data.frame(.textgrid, row.names = .labels)),
     expected = .labels

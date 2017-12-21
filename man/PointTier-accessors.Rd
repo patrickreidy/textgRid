@@ -2,8 +2,8 @@
 % Please edit documentation in R/PointTier-accessors.R
 \name{PointTier-accessors}
 \alias{PointTier-accessors}
-\alias{pointLabels}
 \alias{pointTimes}
+\alias{pointLabels}
 \title{Access the slots of PointTier objects.}
 \usage{
 pointTimes(tier)
@@ -21,4 +21,3 @@ object.
 \code{\link{PointTier-class}},
   \code{\link{PointTier-constructor}}, \code{\link{Tier-accessors}}
 }
-

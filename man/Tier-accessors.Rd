@@ -19,4 +19,3 @@ Get the values of slots in a \code{\link[=Tier-class]{Tier}} object.
 \seealso{
 \code{\link{Tier-class}}
 }
-

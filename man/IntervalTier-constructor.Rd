@@ -2,9 +2,9 @@
 % Please edit documentation in R/IntervalTier-constructor.R
 \docType{methods}
 \name{IntervalTier-constructor}
+\alias{IntervalTier-constructor}
 \alias{IntervalTier}
 \alias{IntervalTier,character-method}
-\alias{IntervalTier-constructor}
 \title{Create an instance of the IntervalTier class.}
 \usage{
 IntervalTier(praatText, ...)
@@ -29,4 +29,3 @@ object.
 \seealso{
 \code{\link{IntervalTier-class}}, \code{\link{IntervalTier-accessors}}
 }
-

@@ -2,9 +2,9 @@
 % Please edit documentation in R/IntervalTier-accessors.R
 \name{IntervalTier-accessors}
 \alias{IntervalTier-accessors}
+\alias{intervalStartTimes}
 \alias{intervalEndTimes}
 \alias{intervalLabels}
-\alias{intervalStartTimes}
 \title{Access the slots of IntervalTier objects.}
 \usage{
 intervalStartTimes(tier)
@@ -24,4 +24,3 @@ object.
 \code{\link{IntervalTier-class}},
   \code{\link{IntervalTier-constructor}}, \code{\link{Tier-accessors}}
 }
-

@@ -26,9 +26,9 @@ IntervalTier.}
 \item{\code{labels}}{A character vector, the labels of the intervals in the
 IntervalTier.}
 }}
+
 \seealso{
 \code{\link{IntervalTier-constructor}},
   \code{\link{IntervalTier-accessors}}, \code{\link{TextGrid-class}},
   \code{\link{Tier-class}}
 }
-

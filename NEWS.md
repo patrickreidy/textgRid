@@ -1,6 +1,10 @@
-# v1.0.1.9000
+# v1.0.1.9001
 
 **_Current development version on Github_**
+
+* `writeTextGrid` function for `TextGrid`s.
+
+# v1.0.1.9000
 
 * `length` methods for `IntervalTier`s and `PointTier`s.
 * `Tier@number` slot changed from `numeric` to `integer`.

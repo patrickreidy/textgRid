@@ -45,4 +45,3 @@ only at the time given by \code{at}.
 \seealso{
 \code{\link{IntervalTier-class}}, \code{\link{grep}}
 }
-

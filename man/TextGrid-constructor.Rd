@@ -2,9 +2,9 @@
 % Please edit documentation in R/TextGrid-constructor.R
 \docType{methods}
 \name{TextGrid-constructor}
+\alias{TextGrid-constructor}
 \alias{TextGrid}
 \alias{TextGrid,character-method}
-\alias{TextGrid-constructor}
 \title{Create an instance of the TextGrid class.}
 \usage{
 TextGrid(textGrid, ...)
@@ -31,7 +31,7 @@ object.
  \code{textGrid} argument is assumed to be a character vector whose
  elements are the lines of some \code{.TextGrid} file.
 }
+
 \seealso{
 \code{\link{TextGrid-class}}, \code{\link{TextGrid-accessors}}
 }
-

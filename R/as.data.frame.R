@@ -44,7 +44,7 @@ as.data.frame.IntervalTier <- function(x, row.names = NULL, optional = FALSE, ..
     .intervals
   )
   if (is.null(row.names)) {
-    row.names(.coerced) <- 1:nrow(.coerced)
+    row.names(.coerced) <- seq_len(nrow(.coerced))
   } else {
     row.names(.coerced) <- row.names
   }
@@ -75,7 +75,7 @@ as.data.frame.PointTier <- function(x, row.names = NULL, optional = FALSE, ..., 
     .points
   )
   if (is.null(row.names)) {
-    row.names(.coerced) <- 1:nrow(.coerced)
+    row.names(.coerced) <- seq_len(nrow(.coerced))
   } else {
     row.names(.coerced) <- row.names
   }
@@ -91,7 +91,7 @@ as.data.frame.TextGrid <- function(x, row.names = NULL, optional = FALSE, ..., s
     Map(f = as.data.frame, x = x, stringsAsFactors = list(stringsAsFactors))
   )
   if (is.null(row.names)) {
-    row.names(.coerced) <- 1:nrow(.coerced)
+    row.names(.coerced) <- seq_len(nrow(.coerced))
   } else {
     row.names(.coerced) <- row.names
   }

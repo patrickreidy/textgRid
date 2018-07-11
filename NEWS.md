@@ -1,8 +1,19 @@
-# v1.0.1.9001
+# v1.0.2
 
 **_Current development version on Github_**
 
+* `encoding` argument added to `TextGrid()` constructor in order to handle
+  non-ASCII characters in .TextGrid files, which is useful for IPA symbols and
+  symbols from the world's languages. By default (`encoding = NULL`), the
+  encoding of file is guessed using `readr::guess_encoding`; however, this
+  can be overridden by identifying the encoding explicitly (e.g., 
+  `encoding = "UTF-8"` or `encoding "UTF-16BE"`).
+
+
+# v1.0.1.9001
+
 * `writeTextGrid` function for `TextGrid`s.
+
 
 # v1.0.1.9000
 

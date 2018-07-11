@@ -103,6 +103,32 @@ as.data.frame(textgrid)
 writeTextGrid(textgrid, path = 'test_out.TextGrid')
 ```
 
+#### Read a TextGrid that contains non-ASCII characters.
+```r
+# Guess the encoding.
+nonASCII <- TextGrid(system.file('extdata', 'nonASCII.TextGrid', package = 'textgRid'),
+                     encoding = NULL)
+
+# Or, explicitly provide the (correct) encoding.
+nonASCII <- TextGrid(system.file('extdata', 'nonASCII.TextGrid', package = 'textgRid'),
+                     encoding = "UTF-16BE")
+
+# An error occurs if the provided encoding is incorrect.
+TextGrid(system.file('extdata', 'nonASCII.TextGrid', package = 'textgRid'),
+                     encoding = "UTF-8")
+
+# Coerce the TextGrid to a data.frame.
+as.data.frame(nonASCII)[1:2, ]
+#   TierNumber TierName     TierType Index StartTime EndTime                      Label
+# 1          1  Bengali IntervalTier     1         0       1   চকলেট এবং চিনাবাদাম মাখন
+# 2          2  Chinese IntervalTier     1         0       1             巧克力和花生醬
+
+# Non-ASCII characters can be used as patterns in searches.
+findIntervals(nonASCII$Bengali, pattern = "চকলেট")
+#   Index StartTime EndTime                    Label
+# 1     1         0       1 চকলেট এবং চিনাবাদাম মাখন
+```
+
 ## Details on S4 classes
 
 The textgRid package defines four S4 classes, whose slots and accessors are 

@@ -38,18 +38,18 @@ test_that('TextGrid accessors return slot-values', {
     object   = textGridStartTime(TextGrid(.textgrid_file)),
     expected = TextGrid(.textgrid_file)@startTime
   )
-  expect_equal(
-    object   = textGridStartTime(TextGrid(readLines(.textgrid_file))),
-    expected = TextGrid(readLines(.textgrid_file))@startTime
-  )
+  # expect_equal(
+  #   object   = textGridStartTime(TextGrid(readLines(.textgrid_file))),
+  #   expected = TextGrid(readLines(.textgrid_file))@startTime
+  # )
   expect_equal(
     object   = textGridEndTime(TextGrid(.textgrid_file)),
     expected = TextGrid(.textgrid_file)@endTime
   )
-  expect_equal(
-    object   = textGridEndTime(TextGrid(readLines(.textgrid_file))),
-    expected = TextGrid(readLines(.textgrid_file))@endTime
-  )
+  # expect_equal(
+  #   object   = textGridEndTime(TextGrid(readLines(.textgrid_file))),
+  #   expected = TextGrid(readLines(.textgrid_file))@endTime
+  # )
 })
 
 

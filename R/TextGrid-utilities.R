@@ -4,10 +4,13 @@ NULL
 
 # Read the contents of @file, returning a character vector whose elements are
 # the lines of @file.
-.ReadPraatFile <- function(file) {
-  .praat_text <- readLines(file)
+.ReadPraatFile <- function(file, encoding) {
+  .con <- file(file, open = "rt", encoding = encoding)
+  .praat_text <- readLines(.con)
+  close(.con)
   return(.praat_text)
 }
+
 
 
 # For extracting the start time and end time from the header.

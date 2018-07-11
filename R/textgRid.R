@@ -9,6 +9,9 @@
 #' S4 classes, generics, and methods for accessing information that is stored
 #' in Praat TextGrid objects.
 #'
+#' @import methods
+#' @import readr
+#'
 #' @section S4 classes:
 #' \code{\link[=Tier-class]{Tier}},
 #' \code{\link[=IntervalTier-class]{IntervalTier}},

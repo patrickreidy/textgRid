@@ -9,12 +9,18 @@
 \usage{
 TextGrid(textGrid, ...)
 
-\S4method{TextGrid}{character}(textGrid)
+\S4method{TextGrid}{character}(textGrid, encoding = NULL)
 }
 \arguments{
 \item{textGrid}{A character vector}
 
 \item{...}{optional arguments for multiple dispatch (in development).}
+
+\item{encoding}{The character encoding of the .TextGrid file. If \code{NULL},
+then the encoding of the file is guessed using \code{\link[readr]{guess_encoding}}.
+Plausible encodings that might be used by Praat are \code{"ASCII"},
+\code{"UTF-8"}, or \code{"UTF-16BE"} (if non-ASCII characters occur in
+the TextGrid).}
 }
 \value{
 A \code{\link[=TextGrid-class]{TextGrid}} object.

@@ -11,6 +11,7 @@
 #'
 #' @import methods
 #' @import readr
+#' @import stringi
 #'
 #' @section S4 classes:
 #' \code{\link[=Tier-class]{Tier}},

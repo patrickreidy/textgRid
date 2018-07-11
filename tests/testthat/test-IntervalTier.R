@@ -72,7 +72,7 @@ test_that('findIntervals() can find intervals with non-empty labels', {
   # 6.0 --  9.0 = word.2
   # 9.0 -- 10.0 = <empty>
   .words_tier <- .textgrid$Words
-  expect_equal(object   = findIntervals(tier = .words_tier, pattern = '.+', 
+  expect_equal(object   = findIntervals(tier = .words_tier, pattern = '.+',
                                         stringsAsFactors = FALSE),
                expected = data.frame(
                  Index     = c(2, 4),
@@ -90,7 +90,7 @@ test_that('findIntervals() can find intervals with non-empty labels', {
                  Label     = c('word.1', 'word.2'),
                  stringsAsFactors = TRUE
                ))
-  expect_equal(object   = findIntervals(tier = .words_tier, pattern = '1', 
+  expect_equal(object   = findIntervals(tier = .words_tier, pattern = '1',
                                         stringsAsFactors = FALSE),
                expected = data.frame(
                  Index     = c(2),
@@ -99,7 +99,7 @@ test_that('findIntervals() can find intervals with non-empty labels', {
                  Label     = c('word.1'),
                  stringsAsFactors = FALSE
                ))
-  expect_equal(object   = findIntervals(tier = .words_tier, pattern = '1', 
+  expect_equal(object   = findIntervals(tier = .words_tier, pattern = '1',
                                         stringsAsFactors = TRUE),
                expected = data.frame(
                  Index     = c(2),
@@ -108,8 +108,8 @@ test_that('findIntervals() can find intervals with non-empty labels', {
                  Label     = c('word.1'),
                  stringsAsFactors = TRUE
                ))
-  expect_equal(object   = findIntervals(tier = .words_tier, pattern = '.+', 
-                                        from = 6.5, to = 7.5, 
+  expect_equal(object   = findIntervals(tier = .words_tier, pattern = '.+',
+                                        from = 6.5, to = 7.5,
                                         stringsAsFactors = FALSE),
                expected = data.frame(
                  Index     = c(4),
@@ -119,7 +119,7 @@ test_that('findIntervals() can find intervals with non-empty labels', {
                  stringsAsFactors = FALSE
                ))
   expect_equal(object   = findIntervals(tier = .words_tier, pattern = '.+',
-                                        from = 6.5, to = 7.5, 
+                                        from = 6.5, to = 7.5,
                                         stringsAsFactors = TRUE),
                expected = data.frame(
                  Index     = c(4),
@@ -167,7 +167,7 @@ test_that('findIntervals() can find intervals with non-empty labels', {
                  Label     = paste('phone', c('1a', '1b', '1c', '2a', '2b', '2c', '2d'), sep = '.'),
                  stringsAsFactors = FALSE
                ))
-  expect_equal(object   = findIntervals(tier = .phones_tier, pattern = '.+', 
+  expect_equal(object   = findIntervals(tier = .phones_tier, pattern = '.+',
                                         stringsAsFactors = TRUE),
                expected = data.frame(
                  Index     = c(2, 3, 4, 6, 7, 8, 9),
@@ -321,13 +321,13 @@ test_that('as.data.frame.IntervalTier() correctly represents interval label', {
   )
   expect_equal(
     object   = as.data.frame(.textgrid$Phones, stringsAsFactors = FALSE)$Label,
-    expected = c('', paste('phone', c('1a', '1b', '1c'), sep  = '.'), '', 
+    expected = c('', paste('phone', c('1a', '1b', '1c'), sep  = '.'), '',
                  paste('phone', c('2a', '2b', '2c', '2d'), sep = '.'), '')
   )
   expect_equal(
     object   = as.data.frame(.textgrid$Phones, stringsAsFactors = TRUE)$Label,
     expected = as.factor(
-      c('', paste('phone', c('1a', '1b', '1c'), sep  = '.'), '', 
+      c('', paste('phone', c('1a', '1b', '1c'), sep  = '.'), '',
         paste('phone', c('2a', '2b', '2c', '2d'), sep = '.'), '')
     )
   )

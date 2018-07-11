@@ -17,7 +17,7 @@ Description: The software application Praat can be used to annotate
 Depends:
     R (>= 3.2.3)
 Imports:
-    methods, readr
+    methods, readr, stringi
 Suggests:
     testthat
 License: GPL-3

@@ -49,7 +49,7 @@ setMethod(
       .textgrid <- textGrid
     }
     new(Class = 'TextGrid',
-        .PraatText2TierObjects(.textgrid),
+        .PraatText2TierObjects(.textgrid, pattern = "^( {4}|\t)item"),
         startTime = .TextGridTime(.textgrid, pattern = '^xmin'),
         endTime = .TextGridTime(.textgrid, pattern = '^xmax')
     )

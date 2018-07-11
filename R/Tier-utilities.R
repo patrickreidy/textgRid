@@ -8,7 +8,7 @@
 
 
 # Count the number of tiers that occur within a block of @praatText.
-.CountTiers <- function(praatText, pattern = '^ {4}item') {
+.CountTiers <- function(praatText, pattern = '^( {4}|\t)item') {
   .count <- length(.TierStartLine(praatText, pattern))
   return(.count)
 }
@@ -22,7 +22,7 @@
 
 
 # Extract the classes of the tiers that occur within a block of @praatText.
-.TierClass <- function(praatText, pattern = '^ {8}class') {
+.TierClass <- function(praatText, pattern = '^( {8}|\t{2})class') {
   .tier_classes <- .Extract(
     .Extract(.PraatLines(praatText, pattern),
                     pattern = '".*"'),
@@ -34,7 +34,7 @@
 
 # Find the line numbers that mark the ends of tiers within a block
 # of @praatText.
-.TierEndLine <- function(praatText, pattern = '^ {4}item') {
+.TierEndLine <- function(praatText, pattern = '^( {4}|\t)item') {
   .end_lines <- `[`(
     c(.TierStartLine(praatText, pattern) - 1, length(praatText)),
     2:(.CountTiers(praatText, pattern) + 1)
@@ -45,7 +45,7 @@
 
 # Generate a list of index-vectors. Each index-vector denotes the lines
 # within a block of @praatText that are spanned by a tier.
-.TierIndices <- function(praatText, pattern = '^ {4}item') {
+.TierIndices <- function(praatText, pattern = '^( {4}|\t)item') {
   .tier_indices <- Map(
     `:`,
     .TierStartLine(praatText, pattern),
@@ -56,7 +56,7 @@
 
 
 # Extract the names of the tiers that occur within a block of @praatText.
-.TierName <- function(praatText, pattern = '^ {8}name') {
+.TierName <- function(praatText, pattern = '^( {8}|\t{2})name') {
   .tier_names <- .Extract(
     .Extract(.PraatLines(praatText, pattern),
                     pattern = '".*"'),
@@ -67,7 +67,7 @@
 
 
 # Extract the numbers of the tiers that occur within a block of @praatText.
-.TierNumber <- function(praatText, pattern = '^ {4}item') {
+.TierNumber <- function(praatText, pattern = '^( {4}|\t)item') {
   .tier_numbers <- .Extract(
     .Extract(.PraatLines(praatText, pattern),
                     pattern = '\\[.*\\]'),
@@ -80,7 +80,7 @@
 
 # Find the line numbers that mark the beginnings of tiers within
 # a block of @praatText.
-.TierStartLine <- function(praatText, pattern = '^ {4}item') {
+.TierStartLine <- function(praatText, pattern = '^( {4}|\t)item') {
   .start_lines <- grep(pattern = pattern, x = praatText)
   return(.start_lines)
 }

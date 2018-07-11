@@ -24,7 +24,7 @@ NULL
 
 # Partition a block of @praatText into a list of sub-blocks, each sub-block
 # corresponding to the lines that define a tier within @praatText.
-.SplitPraatTextIntoTiers <- function(praatText, pattern = '^ {4}item') {
+.SplitPraatTextIntoTiers <- function(praatText, pattern = '^( {4}|\t)item') {
   .tier_blocks <- Map(
     `[`,
     rep(list(praatText), .CountTiers(praatText, pattern)),
@@ -49,7 +49,7 @@ NULL
 
 
 # The real engine for creating TextGrid objects.
-.PraatText2TierObjects <- function(praatText, pattern = '^ {4}item') {
+.PraatText2TierObjects <- function(praatText, pattern = '^( {4}|\t)item') {
   .tier_text    <- .SplitPraatTextIntoTiers(praatText, pattern)
   .tier_classes <- .TierClass(praatText)
   .tier_objects <- Map(.TierText2TierObject, .tier_text, .tier_classes)

@@ -8,6 +8,9 @@
   encoding of file is guessed using `readr::guess_encoding`; however, this
   can be overridden by identifying the encoding explicitly (e.g., 
   `encoding = "UTF-8"` or `encoding "UTF-16BE"`).
+* Some versions of Praat write TextGrid files with spaces; other versions write
+  with tabs. Previous versions of `textgRid` assumed spaces, but now both 
+  formats can be handled.
 
 
 # v1.0.1.9001
